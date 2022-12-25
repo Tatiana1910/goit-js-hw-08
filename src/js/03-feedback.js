@@ -16,6 +16,7 @@ function onFormSubmit(evt) {
 
   console.dir(JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)));
   localStorage.removeItem(LOCALSTORAGE_KEY);
+  formData = {};
 }
 
 function onFormInput(evt) {
@@ -27,7 +28,9 @@ function onPageLoad() {
   const savedData = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 
   if (savedData) {
-    formEl.email.value = savedData.email || '';
-    formEl.message.value = savedData.message || '';
+    Object.entries(savedData).forEach(([key, value]) => {
+      formEl[key].value = value;
+      formData[key] = value;
+    });
   }
 }
