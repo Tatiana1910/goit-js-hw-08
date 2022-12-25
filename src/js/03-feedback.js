@@ -27,7 +27,7 @@ function onPageLoad() {
   const savedData = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 
   if (savedData) {
-    formEl.email.value = savedData.email;
-    formEl.message.value = savedData.message;
+    formEl.email.value = savedData.email || '';
+    formEl.message.value = savedData.message || '';
   }
 }
